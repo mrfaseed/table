@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <style>
 border_width{
@@ -14,6 +14,11 @@ border_width th,tr,td,thead{
     border: solid !important;
     border-width: 3px !important;
 }
+@media  only screen and (max-width:800px) {
+    body{
+        background-color: blanchedalmond;
+    }
+}
 
 th{
     border-right: solid 3px !important;
@@ -23,7 +28,7 @@ th{
 <body>
    <div class="container-fluid text-center">
    <caption>TIME TABLE FOR BCA 2 YEAR</caption>
-    <table class="table table-bordered table-hover text-center border_width table-dark">
+    <table id="myTable" class="table table-bordered table-hover text-center border_width table-dark">
         <thead>
             <tr class="border_width">
                 <th style="border-right: solid 3px !important;">DAY</th>
@@ -86,6 +91,22 @@ th{
     <caption> not real hours @ all of these for content purpose</caption> <br>
     <caption> DEVELOPED BY FASEED </caption>
 </div> 
+
+<script>
+  function handleMediaQueryChange(mediaQuery) {
+            const myTable = document.getElementById('myTable');
+            if (mediaQuery.matches) {
+                
+                myTable.classList.add('table-responsive');
+            } else {
+                myTable.classList.remove('table-responsive');
+            }
+        }
+
+        const mediaQuery = window.matchMedia('(max-width: 600px)');
+        handleMediaQueryChange(mediaQuery);
+        mediaQuery.addListener(handleMediaQueryChange);
+</script>
 </body>
 </html>
 
